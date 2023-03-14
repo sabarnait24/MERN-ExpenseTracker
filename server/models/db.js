@@ -1,9 +1,13 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
 mongoose.set("strictQuery", false);
+const dotenv = require('dotenv');
+dotenv.config();
+
+// console.log(process.env.DB_CONN);
 
 mongoose
-  .connect("mongodb://localhost:27017/exptracker")
+  .connect(process.env.DB_CONN)
   .then(() => {
     console.log("connected");
   })
